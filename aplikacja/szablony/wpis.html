@@ -1,0 +1,16 @@
+
+{% load endless %}
+
+
+{% paginate 10,10 objects %}
+{% get_pages %}
+{{ pages.current_end_index }}
+{% if not page.is_last %}
+    {% for aktualny_wpis in objects %}
+     <div class="entry">
+     	<a href="{{ aktualny_wpis.art_link }}" class="darken obrazek"><img src="{{ aktualny_wpis.img_our_src }}"  alt="{{ aktualny_wpis.img_alt }}" title="{{ aktualny_wpis.img_title }}"/></a>
+	</div>
+    {% endfor %}
+
+{% endif %}
+{#{% show_more %}#}

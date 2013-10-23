@@ -1,0 +1,18 @@
+<div style="">
+<div style="width: 200px; margin:0px; font-size:10; position:absolute;">     
+      <p>
+        Ilość głosów: {{ objects.votes }}<br>
+        Link do artykułu: <a href="{{ objects.art_link }}">{{ objects.art_link }}</a><br>
+        Image alt: {{ objects.img_alt }}<br>
+        Image title: {{ objects.img_title }}<br>
+
+        <a href="{{MEDIA_URL}}">Wróć do strony głównej</a>
+      </p>
+</div>
+
+<div class="entry" style="margin-left:200px; position:absolute;">
+     	<a href="{{ objects.art_link }}">
+     	<img src="{{STATIC_URL}}{{ objects.img_our_src }}"  alt="{{ objects.img_alt }}" title="{{ objects.img_title }}" style="max-width:100%"/></a>	
+</div>
+</div>
+

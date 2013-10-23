@@ -1,0 +1,49 @@
+
+.endless_page_template{
+text-align: center;
+
+}
+.body{
+background-color: #f4f4f4;
+margin: 0px;
+}
+
+#container{
+width:100%;
+text-align: center;
+margin: 0 auto;
+}
+.endless_container{
+clear: both;
+
+}
+.entry{
+overflow: hidden;
+margin: 5px;
+float: left;
+}
+
+.obrazek{
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  border:solid white 0.5em;
+}
+
+a.darken {
+    display: block;
+    background: black;
+    padding: 0;
+}
+
+.entry img{
+  width: 300px;
+}
+
+div.entry:hover img {
+    opacity: 0.6;           
+}
+div.entry:hover div#facelike {
+    display: inline;          
+}
+

@@ -1,0 +1,151 @@
+<html>
+<head>
+<style>
+.endless_page_template{
+text-align: center;
+
+}
+.body{
+background-color: rgb(226, 225, 225);  
+margin: 0px;
+}
+
+#container{
+width:100%;
+text-align: center;
+margin: 0 auto;
+}
+.endless_container{
+clear: both;
+
+}
+.entry{
+overflow: hidden;
+margin: 5px;
+float: left;
+}
+
+.obrazek{
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  border:solid white 0.5em;
+}
+
+a.darken {
+    display: block;
+    background: black;
+    padding: 0;
+}
+
+div.entry:hover img {
+    opacity: 0.6;           
+}
+div.entry:hover div#facelike {
+    display: inline;          
+}
+
+.kategorie{
+  background-color: orange;
+  height: 300px;
+  max-width: 100%;
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
+</style>
+
+{% block js %}
+
+{% endblock %}
+
+
+
+</head>
+<body class="body">
+
+<div class="kategorie"></div>
+
+<div class="endless_page_template" id="container">
+
+   {% include page_template %} 
+
+</div>
+
+
+    <nav class="endless_container">
+        <a class="endless_more" href="/index/?page=2">more</a>
+        
+    </nav>
+
+
+
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/2.1.08/jquery.masonry.min.js"></script>
+<script src="js/jquery.infinitescroll.js"></script>
+
+
+
+
+
+<script type="text/javascript" src="js/jquery-ias.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+jQuery.ias({
+    container : '#container',
+    item: '.entry',
+    pagination: '.endless_container',
+    next: '.endless_container a',
+    loader: '<img src="dist/images/loader.gif"/>'
+});
+});
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  $(function(){
+    
+    var $container = $('#container');
+    
+    $container.imagesLoaded(function(){
+      $container.masonry({
+        itemSelector: '.entry',
+        isResizable: true,
+        isFitWidth: true,
+	isAnimated: false
+      });
+    });
+    
+    $container.infinitescroll({
+      navSelector  : '.endless_container',    // selector for the paged navigation 
+      nextSelector : '.endless_container a',  // selector for the NEXT link (to page 2)
+      itemSelector : '.entry',     // selector for all items you'll retrieve
+      bufferPx       : 2000,
+      loading: {
+          finishedMsg: 'To ostatnie obrazki.',
+          img: 'http://i.imgur.com/6RMhx.gif'
+        }
+      },
+      // trigger Masonry as a callback
+      function( newElements ) {
+        // hide new items while they are loading
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        // ensure that images load before adding to masonry layout
+        $newElems.imagesLoaded(function(){
+          // show elems now they're ready
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true ); 
+        });
+      }
+    );
+    
+  });
+</script>
+
+
+</body></html>

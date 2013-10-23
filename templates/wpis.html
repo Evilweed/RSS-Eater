@@ -1,0 +1,24 @@
+
+{% load endless %}
+
+
+
+{% paginate 25,10 objects %}
+
+{% get_pages %}
+
+{% if not page.is_last %}
+    {% for aktualny_wpis in objects %}
+     <div class="entry">
+
+  
+     	<a href="{{MEDIA_URL}}image/{{ aktualny_wpis.id }}-{{ aktualny_wpis.img_title }}">
+
+
+     		<img src="{{STATIC_URL}}{{ aktualny_wpis.img_our_src_small }}"  alt="{{ aktualny_wpis.img_alt }}" title="{{ aktualny_wpis.img_title }}"/></a>
+     			
+	</div>
+    {% endfor %}
+
+{% endif %}
+{#{% show_more %}#}

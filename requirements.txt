@@ -1,0 +1,17 @@
+Django==1.5.4
+amqplib
+anyjson
+argparse
+celery
+django-toolbelt
+feedparser
+kombu
+python-dateutil
+wsgiref
+PIL
+django-endless-pagination
+boto
+django-storages
+psycopg2
+gunicorn
+django-celery
